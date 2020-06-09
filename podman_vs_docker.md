@@ -4,7 +4,9 @@
 
 # 专注于OCI容器管理的工具
 
-## 1、Docker 是目前最流行的 Linux 容器解决方案，即使 Docker 是目前管理 Linux 容器的一个非常方便的工具，但它也有两个缺点：
+## 1、Docker
+
+Docker 是目前最流行的 Linux 容器解决方案，即使 Docker 是目前管理 Linux 容器的一个非常方便的工具，但它也有两个缺点：
 
 - Docker 需要在你的系统上运行一个守护进程。
 
@@ -12,7 +14,9 @@
 
 这些缺点的存在可能有一定的安全隐患，为了解决这些问题，下一代容器化工具 Podman 出现了 。
 
-## 2、Podman 是一个开源的容器运行时项目，可在大多数 Linux 平台上使用。Podman 提供与 Docker 非常相似的功能。
+## 2、Podman
+
+Podman 是一个开源的容器运行时项目，可在大多数 Linux 平台上使用。Podman 提供与 Docker 非常相似的功能。
 
 Podman 可以管理和运行任何符合 OCI（Open Container Initiative）规范的容器和容器镜像。Podman 提供了一个与 Docker 兼容的命令行前端来管理 Docker 镜像。
 

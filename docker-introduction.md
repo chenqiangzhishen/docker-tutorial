@@ -11,7 +11,7 @@
 
 ![IMAGE](assets/container_vs_vm)
 
-容器是一种轻量级的虚拟化技术，因为它跟虚拟机比起来，它少了一层 hypervisor，实际上它只是一个进程。 
+容器是一种轻量级的虚拟化技术，因为它跟虚拟机比起来，它少了一层 hypervisor，实际上它只是一个进程。
 先看一下下面这张图，这张图简单描述了一个容器的启动过程。
 
 ![IMAGE](assets/container_process)
@@ -26,7 +26,7 @@
 
 namespace 是用来做资源隔离的，在 Linux 内核上有七种 namespace，docker 中用到了前六种。第七种 cgroup namespace 在 docker 本身并没有用到，但是在 runC 实现中实现了 cgroup namespace。
 
-- 第一个是 mout namespace。mout namespace 就是保证容器看到的文件系统的视图，是容器镜像提供的一个文件系统，也就是说它看不见宿主机上的其他文件，除了通过 -v 参数 bound 的那种模式，是可以把宿主机上面的一些目录和文件，让它在容器里面可见的。
+- 第一个是 mount namespace。mount namespace 就是保证容器看到的文件系统的视图，是容器镜像提供的一个文件系统，也就是说它看不见宿主机上的其他文件，除了通过 -v 参数 bound 的那种模式，是可以把宿主机上面的一些目录和文件，让它在容器里面可见的。
 
 - 第二个是 uts namespace，这个 namespace 主要是隔离了 hostname 和 domain。
 
@@ -38,7 +38,7 @@ namespace 是用来做资源隔离的，在 Linux 内核上有七种 namespace�
 
 - 第六个是 IPC namespace，这个 namespace 是控制了进程兼通信的一些东西，比方说信号量。
 
-- 第七个是 cgroup namespace，上图右边有两张示意图，分别是表示开启和关闭 cgroup namespace。用 cgroup namespace 带来的一个好处是容器中看到的 cgroup 视图是以根的形式来呈现的，这样的话就和宿主机上面进程看到的 cgroup namespace 的一个视图方式是相同的。另外一个好处是让容器内部使用 cgroup 会变得更安全。
+- 第七个是 cgroup namespace, 用 cgroup namespace 带来的一个好处是容器中看到的 cgroup 视图是以根的形式来呈现的，这样的话就和宿主机上面进程看到的 cgroup namespace 的一个视图方式是相同的。另外一个好处是让容器内部使用 cgroup 会变得更安全。
 
 这里我们简单用 unshare 示例一下 namespace 创立的过程。容器中 namespace 的创建其实都是用 unshare 这个系统调用来创建的。
 

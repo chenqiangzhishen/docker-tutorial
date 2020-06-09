@@ -30,7 +30,7 @@ systemctl start kubelet # 假设您安装了 kubenetes
 # 查看修改结果
 
 执行 `docker info`
-![IMAGE](quiver-image-url/B8183A2968DE4AF7C607A60F887266D4.jpg =450x328)
+![IMAGE](assets/docker_info)
 
 # 其他镜像源
 
