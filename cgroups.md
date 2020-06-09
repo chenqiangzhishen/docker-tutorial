@@ -140,34 +140,39 @@ memory.force_empty              memory.kmem.tcp.usage_in_bytes      memory.move_
 memory.kmem.failcnt             memory.kmem.usage_in_bytes          memory.numa_stat                 notify_on_release
 memory.kmem.limit_in_bytes      memory.limit_in_bytes               memory.oom_control               tasks
 memory.kmem.max_usage_in_bytes  memory.max_usage_in_bytes           memory.pressure_level
+-[root@chenqiang-dev demo-limit-memory]# echo "100m" > memory.limit_in_bytes 
 -[root@chenqiang-dev demo-limit-memory]# cat memory.limit_in_bytes 
 104857600
 -[root@chenqiang-dev demo-limit-memory]# echo $$
-4557
--[root@chenqiang-dev demo-limit-memory]# cat tasks 
-1801
+19357
 -[root@chenqiang-dev demo-limit-memory]# echo $$ > tasks 
 -[root@chenqiang-dev demo-limit-memory]# cat tasks 
-1801
-4557
-4618
+19357
+20345
 -[root@chenqiang-dev demo-limit-memory]# stress --vm-bytes 200m --vm-keep -m 1
-stress: info: [4619] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
-stress: FAIL: [4619] (415) <-- worker 4620 got signal 9
-stress: WARN: [4619] (417) now reaping child worker processes
-stress: FAIL: [4619] (451) failed run completed in 0s
--[root@chenqiang-dev demo-limit-memory]# stress --vm-bytes 50m --vm-keep -m 1  
-stress: info: [4621] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
-^C
--[root@chenqiang-dev demo-limit-memory]# stress --vm-bytes 100m --vm-keep -m 1 
-stress: info: [4623] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
-stress: FAIL: [4623] (415) <-- worker 4624 got signal 9
-stress: WARN: [4623] (417) now reaping child worker processes
-stress: FAIL: [4623] (451) failed run completed in 0s
+stress: info: [20380] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
+stress: FAIL: [20380] (415) <-- worker 20381 got signal 9
+stress: WARN: [20380] (417) now reaping child worker processes
+stress: FAIL: [20380] (451) failed run completed in 0s
 -[root@chenqiang-dev demo-limit-memory]# stress --vm-bytes 90m --vm-keep -m 1  
-stress: info: [4625] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
-^C
+stress: info: [20396] dispatching hogs: 0 cpu, 0 io, 1 vm, 0 hdd
+```
 
+```bash
+# 打开另一个控制台查看一下
+# 显示 Mem 占了 0.3%
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                     
+20397 root      20   0   99428  92380    132 R 100.0  0.3   0:27.48 stress  
+
+-[root@chenqiang-dev demo-limit-memory]# free -h
+              total        used        free      shared  buff/cache   available
+Mem:            31G        710M         25G         24M        5.4G         30G
+Swap:            0B          0B          0B
+-[root@chenqiang-dev demo-limit-memory]# bc <<< "32 * 0.3 * 0.01"
+.09
+-[root@chenqiang-dev demo-limit-memory]# bc <<< "32 * 0.3 * 0.01 * 1024"
+92.16
 ```
 
 ## 看看docker 情况
