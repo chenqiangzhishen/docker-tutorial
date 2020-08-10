@@ -16,3 +16,5 @@ is used to demo docker related knowledge
 [7、镜像加速方法](docker_image_accelerate.md)
 
 [8、容器的存储管理规范](container_storage_principle.md)
+
+[9、容器的镜像制作规范](docker_image_customize.md)
