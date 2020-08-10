@@ -14,3 +14,5 @@ is used to demo docker related knowledge
 [6、Podman vs Docker 介绍](podman_vs_docker.md)
 
 [7、镜像加速方法](docker_image_accelerate.md)
+
+[8、容器的存储管理规范](container_storage_principle.md)
