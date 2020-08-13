@@ -40,8 +40,6 @@ pids /sys/fs/cgroup/pids
 └── cgroup-demo
 
 1 directory, 0 files
--[root@chenqiang-dev cgroups]# mount -t cgroup -o none,name=cgroup-demo ./cgroup-demo
-mount: can't find ./cgroup-demo in /etc/fstab
 -[root@chenqiang-dev cgroups]# ls
 cgroup-demo
 -[root@chenqiang-dev cgroups]# mount -t cgroup -o none,name=cgroup-demo cgroup-demo ./cgroup-demo
@@ -183,12 +181,6 @@ Swap:            0B          0B          0B
 CONTAINER ID        IMAGE                                                      COMMAND                  CREATED             STATUS              PORTS               NAMES
 cc09e736e62a        qzschen/nginx-hello   "/bin/sh -c 'nginx -…"   4 seconds ago       Up 2 seconds        80/tcp              nostalgic_pike
 -[appuser@chenqiang-dev workstation]$ sudo su
--[root@chenqiang-dev workstation]# cd /sys/fs/cgroup/memory/d
-demo-limit-memory/ docker/            
--[root@chenqiang-dev workstation]# cd /sys/fs/cgroup/memory/d
-demo-limit-memory/ docker/            
--[root@chenqiang-dev workstation]# cd /sys/fs/cgroup/memory/d
-demo-limit-memory/ docker/            
 -[root@chenqiang-dev workstation]# cd /sys/fs/cgroup/memory/docker/cc09e736e62abfb2d4c326f78cfdcb1e0b885d2d30e86ee4ab48f4319d3c6bd5/
 -[root@chenqiang-dev cc09e736e62abfb2d4c326f78cfdcb1e0b885d2d30e86ee4ab48f4319d3c6bd5]# ls
 cgroup.clone_children           memory.kmem.slabinfo                memory.memsw.failcnt             memory.soft_limit_in_bytes
@@ -279,8 +271,6 @@ cgroup.event_control   cpuacct.stat  cpuacct.usage_percpu  cpu.cfs_quota_us   cp
 50000
 -[appuser@chenqiang-dev demo]$ echo $$
 3737
--[appuser@chenqiang-dev demo]$ sudo bash -c "echo $$ > cgroups.procs"
-bash: cgroups.procs: Permission denied
 -[appuser@chenqiang-dev demo]$ sudo bash -c "echo $$ > cgroup.procs" 
 -[appuser@chenqiang-dev demo]$ cat cgroup.procs 
 3737
@@ -290,10 +280,6 @@ bash: cgroups.procs: Permission denied
 -[appuser@chenqiang-dev demo]$ ls
 cgroup.clone_children  cgroup.procs  cpuacct.usage         cpu.cfs_period_us  cpu.rt_period_us   cpu.shares  notify_on_release
 cgroup.event_control   cpuacct.stat  cpuacct.usage_percpu  cpu.cfs_quota_us   cpu.rt_runtime_us  cpu.stat    tasks
--[appuser@chenqiang-dev demo]$ cat cpu.s
-cpu.shares  cpu.stat    
--[appuser@chenqiang-dev demo]$ cat cpu.s
-cpu.shares  cpu.stat    
 -[appuser@chenqiang-dev demo]$ cat cpu.stat 
 nr_periods 245
 nr_throttled 216

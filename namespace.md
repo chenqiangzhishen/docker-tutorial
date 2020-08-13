@@ -49,7 +49,6 @@ uts:[4026532212]
 uts:[4026531838]
 -[ns-demo]- # hostname
 chenqiang-dev.novalocal
-You have new mail in /var/mail/root
 -[ns-demo]- # hostname -b demo
 -[ns-demo]- # hostname
 demo
@@ -58,8 +57,6 @@ exit
 -[root@chenqiang-dev namespaces]# hostname
 chenqiang-dev.novalocal
 
--[root@chenqiang-dev namespaces]#  ls -lth /var/spool/mail/
--[root@chenqiang-dev namespaces]# cat /dev/null > /var/spool/mail/root
 ```
 ---
 

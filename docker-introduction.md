@@ -32,7 +32,7 @@ namespace 是用来做资源隔离的，在 Linux 内核上有七种 namespace�
 
 - 第三个是 pid namespace，这个 namespace 是保证了容器的 init 进程是以 1 号进程来启动的。
 
-- 第四个是网络 namespace，除了容器用 host 网络这种模式之外，其他所有的网络模式都有一个自己的 network namespace 的文件。
+- 第四个是 network namespace，除了容器用 host 网络这种模式之外，其他所有的网络模式都有一个自己的 network namespace 的文件。
 
 - 第五个是 user namespace，这个 namespace 是控制用户 UID 和 GID 在容器内部和宿主机上的一个映射，不过这个 namespace 用的比较少。
 
